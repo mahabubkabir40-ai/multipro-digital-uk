@@ -6,7 +6,8 @@
   const navLinks = document.querySelector('[data-nav-links]');
   if (menuBtn && navLinks) {
     menuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
+      const isOpen = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
     });
   }
 
@@ -138,7 +139,9 @@
       activeSpecIdx = 0;
       const cfg = TRADE_CONFIG[activeTrade];
       tabBtns.forEach((b) => {
-        b.classList.toggle('active', b.getAttribute('data-trade-tab') === activeTrade);
+        const isActive = b.getAttribute('data-trade-tab') === activeTrade;
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-selected', String(isActive));
       });
       slider.min = cfg.minArea;
       slider.max = cfg.maxArea;
@@ -160,6 +163,7 @@
 
   // FAQ Accordion
   document.querySelectorAll('.faq-question').forEach((btn) => {
+    btn.setAttribute('aria-expanded', 'false');
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
       const answer = item.querySelector('.faq-answer');
@@ -167,11 +171,13 @@
 
       document.querySelectorAll('.faq-item.open').forEach((openItem) => {
         openItem.classList.remove('open');
+        openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
         openItem.querySelector('.faq-answer').style.maxHeight = null;
       });
 
       if (!isOpen) {
         item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
         answer.style.maxHeight = answer.scrollHeight + 'px';
       }
     });

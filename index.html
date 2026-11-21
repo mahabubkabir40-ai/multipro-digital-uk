@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://multiprodigital.co.uk/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=optional" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
 
   <script type="application/ld+json">
@@ -106,7 +106,7 @@
       </nav>
 
       <a href="#audit" class="header-cta">Get Free 60s Video Audit</a>
-      <button class="menu-toggle" type="button" aria-label="Toggle Menu" data-menu-toggle>☰</button>
+      <button class="menu-toggle" type="button" aria-label="Toggle Menu" aria-expanded="false" data-menu-toggle>☰</button>
     </div>
   </header>
 
@@ -157,7 +157,7 @@
             <input type="hidden" name="_subject" value="New UK 60s Video Audit Request (multiprodigital.co.uk)">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_ts" value="">
-            <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off">
+            <input type="text" name="_honey" class="hp-field" aria-hidden="true" aria-label="Leave blank" tabindex="-1" autocomplete="off">
 
             <div class="form-row-2">
               <div class="form-field">
@@ -166,7 +166,7 @@
               </div>
               <div class="form-field">
                 <label for="company">Company Name (Ltd) *</label>
-                <input id="company" name="Company" type="text" placeholder="e.g. Peak Resin Driveways Ltd" required>
+                <input id="company" name="Company" type="text" placeholder="e.g. Peak Resin Ltd" required>
               </div>
             </div>
 
@@ -178,9 +178,9 @@
               <div class="form-field">
                 <label for="trade">Primary Trade *</label>
                 <select id="trade" name="Trade" required>
-                  <option value="Resin-Bound Driveways">Resin-Bound Driveways</option>
+                  <option value="Resin-Bound Driveways">Resin Driveways</option>
                   <option value="Resin & Epoxy Flooring">Resin &amp; Epoxy Flooring</option>
-                  <option value="Polished Concrete / Microcement">Polished Concrete / Microcement</option>
+                  <option value="Polished Concrete / Microcement">Polished Concrete</option>
                 </select>
               </div>
             </div>
@@ -192,10 +192,10 @@
 
             <div class="form-field">
               <label for="website">Current Website or Google Profile URL</label>
-              <input id="website" name="Website" type="text" placeholder="www.yourcompany.co.uk">
+              <input id="website" name="Website" type="text" placeholder="yourcompany.co.uk">
             </div>
 
-            <button type="submit" class="btn-primary">Send My Free 60-Second Audit →</button>
+            <button type="submit" class="btn-primary">Send My Free 60s Audit&nbsp;→</button>
             <p class="form-footnote">Delivered straight to your inbox within 1 working day. Zero pushy sales calls.</p>
             <div class="form-feedback" data-form-feedback></div>
           </form>
@@ -213,10 +213,10 @@
         </div>
 
         <div class="estimator-shell" data-estimator data-default-trade="driveway">
-          <div class="trade-tabs" role="tablist">
-            <button type="button" class="trade-tab active" data-trade-tab="driveway">Resin-Bound Driveways</button>
-            <button type="button" class="trade-tab" data-trade-tab="flooring">Resin &amp; Epoxy Flooring</button>
-            <button type="button" class="trade-tab" data-trade-tab="concrete">Polished Concrete / Microcement</button>
+          <div class="trade-tabs" role="tablist" aria-label="Select UK Surface Trade">
+            <button type="button" role="tab" aria-selected="true" class="trade-tab active" data-trade-tab="driveway">Resin-Bound Driveways</button>
+            <button type="button" role="tab" aria-selected="false" class="trade-tab" data-trade-tab="flooring">Resin &amp; Epoxy Flooring</button>
+            <button type="button" role="tab" aria-selected="false" class="trade-tab" data-trade-tab="concrete">Polished Concrete / Microcement</button>
           </div>
 
           <div class="estimator-grid">
@@ -316,22 +316,22 @@
           <div class="sprint-steps">
             <div class="sprint-step">
               <div class="sprint-day">Days 1 – 2</div>
-              <h4>Competitor &amp; Maps Audit</h4>
+              <h3>Competitor &amp; Maps Audit</h3>
               <p>We map the top 3 competitors in your town, fix your Google Business Profile categories, services and geo-areas, and wire your copy.</p>
             </div>
             <div class="sprint-step">
               <div class="sprint-day">Days 3 – 4</div>
-              <h4>Sub-1.5s Mobile Website</h4>
+              <h3>Sub-1.5s Mobile Website</h3>
               <p>We build a clean, dark-luxury static website tailored to your exact trade, gallery photos, accreditations and direct survey forms.</p>
             </div>
             <div class="sprint-step">
               <div class="sprint-day">Days 5 – 6</div>
-              <h4>Live m² Quote Estimator</h4>
+              <h3>Live m² Quote Estimator</h3>
               <p>We calibrate your real per-m² UK rates into an interactive calculator that pre-educates homeowners before they ever message you.</p>
             </div>
             <div class="sprint-step">
               <div class="sprint-day">Day 7</div>
-              <h4>Live Launch &amp; Handover</h4>
+              <h3>Live Launch &amp; Handover</h3>
               <p>We connect your domain with full HTTPS security, submit your fresh sitemap to Google, and hand over 100% ownership to you.</p>
             </div>
           </div>
@@ -468,7 +468,7 @@
         </div>
 
         <div class="footer-col">
-          <h4>UK Specialist Trades</h4>
+          <h3>UK Specialist Trades</h3>
           <ul class="footer-links">
             <li><a href="/resin-driveways/">Resin-Bound Driveways</a></li>
             <li><a href="/resin-flooring/">Resin &amp; Epoxy Flooring</a></li>
@@ -478,7 +478,7 @@
         </div>
 
         <div class="footer-col">
-          <h4>Direct Contact &amp; Compliance</h4>
+          <h3>Direct Contact &amp; Compliance</h3>
           <ul class="footer-links">
             <li><a href="mailto:mahabub@multiprodigital.co.uk">mahabub@multiprodigital.co.uk</a></li>
             <li><a href="/#audit">Request 60-Second Video Audit</a></li>
