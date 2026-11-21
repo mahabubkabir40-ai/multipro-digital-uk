@@ -262,8 +262,8 @@
                 <div class="confirm-step"><span class="confirm-num">2</span><div><strong>Clear Straight Answer</strong>Expect a concise reply to ${userEmail} within 1 UK working day.</div></div>
               `
               : `
-                <div class="confirm-step"><span class="confirm-num">1</span><div><strong>Google Maps &amp; Site Audit</strong>We check your local rankings and mobile site speed against #1 in your town.</div></div>
-                <div class="confirm-step"><span class="confirm-num">2</span><div><strong>60-Second Video Recorded</strong>We highlight 2 fast fixes + how a live m² estimator filters tyre-kickers.</div></div>
+                <div class="confirm-step"><span class="confirm-num">1</span><div><strong>Google Maps &amp; Site Check</strong>We check how your website loads on phone &amp; desktop and who sits above you on Google Maps in your town.</div></div>
+                <div class="confirm-step"><span class="confirm-num">2</span><div><strong>60-Second Video Recorded</strong>We show 2 straight fixes + how a live m² calculator stops tyre-kickers wasting your fuel.</div></div>
                 <div class="confirm-step"><span class="confirm-num">3</span><div><strong>Sent Straight to Your Inbox</strong>Delivered to ${userEmail} within 1 working day. Zero pushy calls.</div></div>
               `;
 
