@@ -183,7 +183,11 @@
     });
   });
 
-  // 60-Second Audit Form Submission (AJAX via FormSubmit -> mahabub@multiprodigital.co.uk)
+  const escapeHTML = (str) => String(str || '').replace(/[&<>"']/g, (m) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[m]));
+
+  // 60-Second Audit & Contact Form Submission (AJAX via FormSubmit -> mahabub@multiprodigital.co.uk)
   document.querySelectorAll('[data-audit-form]').forEach((form) => {
     const tsField = form.querySelector('input[name="_ts"]');
     if (tsField) tsField.value = String(Date.now());
@@ -213,6 +217,11 @@
         }
       });
 
+      const firstName = escapeHTML((payload.Name || 'there').trim().split(/\s+/)[0]);
+      const company = escapeHTML((payload.Company || 'your business').trim());
+      const userEmail = escapeHTML((payload.Email || 'your inbox').trim());
+      const isContactPage = Boolean(payload.Message);
+
       try {
         const res = await fetch('https://formsubmit.co/ajax/mahabub@multiprodigital.co.uk', {
           method: 'POST',
@@ -224,9 +233,63 @@
         });
 
         if (res.ok) {
-          feedback.className = 'form-feedback success';
-          feedback.textContent = 'Audit request received! Mahabub will record your 60-second video breakdown and email it within 1 working day.';
+          const card = form.closest('.audit-card');
+          const header = card ? card.querySelector('.audit-card-header') : null;
           form.reset();
+
+          if (card) {
+            form.style.display = 'none';
+            if (header) header.style.display = 'none';
+
+            const existingPanel = card.querySelector('.confirm-panel');
+            if (existingPanel) existingPanel.remove();
+
+            const panel = document.createElement('div');
+            panel.className = 'confirm-panel';
+            panel.setAttribute('role', 'status');
+            panel.setAttribute('aria-live', 'polite');
+
+            const headline = isContactPage
+              ? 'Message Received — Thank You!'
+              : "You're In! Your 60-Second Audit Is Queued.";
+            const subline = isContactPage
+              ? `Thanks, <strong>${firstName}</strong>. Mahabub has received your note for <strong>${company}</strong> and will reply to <strong>${userEmail}</strong> within 1 working day.`
+              : `Thanks, <strong>${firstName}</strong>. Mahabub is reviewing <strong>${company}</strong> and will email your private 60-second video breakdown to <strong>${userEmail}</strong> within 1 working day.`;
+
+            const stepsHTML = isContactPage
+              ? `
+                <div class="confirm-step"><span class="confirm-num">1</span><div><strong>Direct Founder Review</strong>Mahabub personally reads every enquiry — zero junior reps.</div></div>
+                <div class="confirm-step"><span class="confirm-num">2</span><div><strong>Clear Straight Answer</strong>Expect a concise reply to ${userEmail} within 1 UK working day.</div></div>
+              `
+              : `
+                <div class="confirm-step"><span class="confirm-num">1</span><div><strong>Google Maps &amp; Site Audit</strong>We check your local rankings and mobile site speed against #1 in your town.</div></div>
+                <div class="confirm-step"><span class="confirm-num">2</span><div><strong>60-Second Video Recorded</strong>We highlight 2 fast fixes + how a live m² estimator filters tyre-kickers.</div></div>
+                <div class="confirm-step"><span class="confirm-num">3</span><div><strong>Sent Straight to Your Inbox</strong>Delivered to ${userEmail} within 1 working day. Zero pushy calls.</div></div>
+              `;
+
+            panel.innerHTML = `
+              <div class="confirm-icon-wrap" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <h3>${headline}</h3>
+              <p class="confirm-lead">${subline}</p>
+              <div class="confirm-steps">${stepsHTML}</div>
+              <button type="button" class="confirm-reset-btn">Send Another Request</button>
+            `;
+
+            panel.querySelector('.confirm-reset-btn').addEventListener('click', () => {
+              panel.remove();
+              form.style.display = '';
+              if (header) header.style.display = '';
+            });
+
+            card.appendChild(panel);
+          } else {
+            feedback.className = 'form-feedback success';
+            feedback.textContent = 'Request received! Mahabub will reply within 1 working day.';
+          }
         } else {
           throw new Error('Submission failed');
         }
