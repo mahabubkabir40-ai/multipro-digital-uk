@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live UK Quote Calculator Demo | Resin Driveways &amp; Flooring | MultiPro Digital</title>
+  <meta name="description" content="Try our live UK instant quote calculator for resin-bound driveways, resin and epoxy flooring, and polished concrete. Built to filter out low-budget tyre-kickers before you drive out to quote.">
+  <link rel="canonical" href="https://multiprodigital.co.uk/estimator/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=optional" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://multiprodigital.co.uk/" },
+      { "@type": "ListItem", "position": 2, "name": "Quote Calculator", "item": "https://multiprodigital.co.uk/estimator/" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand" aria-label="MultiPro Digital Home">
+        <img src="/favicon.svg" alt="" width="38" height="38" class="brand-icon" aria-hidden="true">
+        <span>MultiPro <span class="brand-accent">Digital</span></span>
+      </a>
+
+      <nav class="nav-links" data-nav-links>
+        <div class="nav-dropdown">
+          <button type="button" class="nav-dropdown-trigger" aria-haspopup="true">Trades ▾</button>
+          <div class="nav-dropdown-menu">
+            <a href="/resin-driveways/">Resin-Bound Driveways</a>
+            <a href="/resin-flooring/">Resin &amp; Epoxy Flooring</a>
+            <a href="/polished-concrete/">Polished Concrete &amp; Microcement</a>
+          </div>
+        </div>
+        <a href="/estimator/" class="active">Quote Calculator</a>
+        <a href="/#offer">7-Day Build</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+
+      <a href="#request" class="header-cta">Get Free 60s Video Audit</a>
+      <button class="menu-toggle" type="button" aria-label="Toggle Menu" aria-expanded="false" data-menu-toggle>☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="padding:44px 0 64px;">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a> <span>/</span> <span>Live Quote Calculator</span>
+        </nav>
+
+        <div class="section-header" style="margin-bottom:28px;max-width:760px;">
+          <span class="section-kicker">Interactive UK Demo</span>
+          <h1 style="font-size:clamp(1.9rem,3.6vw,2.75rem);margin-bottom:12px;">Test Our Live <span class="accent">Instant Quote Calculator</span></h1>
+          <p class="hero-lead" style="margin-bottom:0;max-width:680px;">
+            Pick a trade below and slide the square-metre bar. We brand this calculator to your business and set it to your exact overlay, dig-out or coating rates — so £1,500 tyre-kickers filter themselves out before you burn diesel driving over.
+          </p>
+        </div>
+
+        <div class="estimator-shell" data-estimator data-default-trade="driveway">
+          <div class="trade-tabs" role="tablist" aria-label="Select UK Surface Trade">
+            <button type="button" role="tab" aria-selected="true" class="trade-tab active" data-trade-tab="driveway">Resin-Bound Driveways</button>
+            <button type="button" role="tab" aria-selected="false" class="trade-tab" data-trade-tab="flooring">Resin &amp; Epoxy Flooring</button>
+            <button type="button" role="tab" aria-selected="false" class="trade-tab" data-trade-tab="concrete">Polished Concrete / Microcement</button>
+          </div>
+
+          <div class="estimator-grid">
+            <div class="est-controls">
+              <div>
+                <div class="est-label-row">
+                  <label for="area-slider">Approximate Project Area (m²)</label>
+                  <span class="est-area-readout" data-area-readout>50 m²</span>
+                </div>
+                <input id="area-slider" class="range-slider" type="range" min="20" max="180" step="5" value="50" data-area-slider>
+                <div class="range-scale">
+                  <span>20 m² (Single)</span>
+                  <span>Mid-Size</span>
+                  <span data-max-scale>180 m²</span>
+                </div>
+              </div>
+
+              <div>
+                <div class="est-label-row">
+                  <label>Select Preparation / System Specification</label>
+                </div>
+                <div class="spec-options" data-spec-options></div>
+              </div>
+            </div>
+
+            <div class="est-output">
+              <div class="est-output-tag">Estimated UK Project Guide</div>
+              <div class="est-price-range" data-price-range>£4,750 – £6,000</div>
+              <div class="est-rate-detail" data-rate-detail>Resin-Bound Driveway • Approx. £95–£120/m²</div>
+              <div class="est-why-box" data-why-box></div>
+              <a href="#request" class="btn-primary">Put This Calculator on My Site&nbsp;→</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="request">
+      <div class="container hero-grid" style="align-items:center;">
+        <div>
+          <span class="section-kicker">Custom Built for Your Business</span>
+          <h2 style="font-size:clamp(1.65rem,3vw,2.3rem);font-weight:800;line-height:1.2;margin-bottom:14px;">
+            Want This Live Calculator on Your Website Before January?
+          </h2>
+          <p style="color:var(--text-secondary);margin-bottom:20px;">
+            We build this exact calculator with your company logo, your real per-square-metre pricing, and your own quote form — included inside our flat <strong>£750 7-Day Spring Diary Build</strong> (fast phone &amp; desktop website + calculator + Google Maps setup).
+          </p>
+          <ul class="hero-bullets">
+            <li><span class="check-icon">✓</span><span><strong>Zero Bloated Plugins:</strong> Loads instantly on 4G mobile and desktop with zero monthly software fees.</span></li>
+            <li><span class="check-icon">✓</span><span><strong>Calibrated to Your Rates:</strong> You set your exact minimum job price and square-metre tiers.</span></li>
+            <li><span class="check-icon">✓</span><span><strong>100% Ownership:</strong> Flat £750 (£375 upfront, £375 when live) — no 12-month contract.</span></li>
+          </ul>
+        </div>
+
+        <aside class="audit-card">
+          <div class="audit-card-header">
+            <h2>Request a Mock-Up for Your Business</h2>
+            <p>Drop your details below and Mahabub will send over a free 60-second video breakdown for your town within 1 working day.</p>
+          </div>
+          <form class="form-grid" data-audit-form>
+            <input type="hidden" name="_subject" value="UK Calculator Mock-Up Request (multiprodigital.co.uk/estimator)">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_ts" value="">
+            <input type="text" name="_honey" class="hp-field" aria-hidden="true" aria-label="Leave blank" tabindex="-1" autocomplete="off">
+
+            <div class="form-row-2">
+              <div class="form-field">
+                <label for="name">Your Name *</label>
+                <input id="name" name="Name" type="text" required>
+              </div>
+              <div class="form-field">
+                <label for="company">Company Name (Ltd) *</label>
+                <input id="company" name="Company" type="text" required>
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-field">
+                <label for="town">Town / County *</label>
+                <input id="town" name="Town_County" type="text" required>
+              </div>
+              <div class="form-field">
+                <label for="trade">Primary Trade *</label>
+                <select id="trade" name="Trade" required>
+                  <option value="Resin-Bound Driveways">Resin Driveways</option>
+                  <option value="Resin & Epoxy Flooring">Resin &amp; Epoxy Flooring</option>
+                  <option value="Polished Concrete / Microcement">Polished Concrete</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="email">Work Email *</label>
+              <input id="email" name="Email" type="email" required>
+            </div>
+
+            <div class="form-field">
+              <label for="website">Current Website or Google Profile URL</label>
+              <input id="website" name="Website" type="text">
+            </div>
+
+            <button type="submit" class="btn-primary">Send My Free 60s Audit&nbsp;→</button>
+            <p class="form-footnote">Delivered straight to your inbox within 1 working day. Zero pushy calls.</p>
+            <div class="form-feedback" data-form-feedback></div>
+          </form>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© 2026 MultiPro Digital • <a href="mailto:mahabub@multiprodigital.co.uk" style="color:var(--brand-lime);">mahabub@multiprodigital.co.uk</a></span>
+        <span><a href="/">Home</a> · <a href="/resin-driveways/">Resin Driveways</a> · <a href="/resin-flooring/">Resin Flooring</a> · <a href="/polished-concrete/">Polished Concrete</a> · <a href="/contact/">Contact</a> · <a href="/privacy-policy/">Privacy Notice</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
