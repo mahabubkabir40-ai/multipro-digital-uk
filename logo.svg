@@ -8,17 +8,13 @@
       <stop offset="0%" stop-color="#b2ff4a"/>
       <stop offset="100%" stop-color="#9afb16"/>
     </linearGradient>
-    <linearGradient id="logoBlue" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38bdf8"/>
-      <stop offset="100%" stop-color="#1da4ff"/>
-    </linearGradient>
   </defs>
 
-  <!-- Brand Emblem -->
-  <rect x="1" y="2" width="38" height="38" rx="9" fill="url(#logoBg)" stroke="#1da4ff" stroke-opacity="0.5" stroke-width="1.5"/>
-  <path d="M8.5 30V14.5c0-1 1.1-1.6 1.9-1l5.1 3.5 5.1-3.5c.8-.6 1.9 0 1.9 1V30h-3.6V19.6l-3.4 2.3-3.4-2.3V30H8.5z" fill="url(#logoLime)"/>
-  <path d="M22.5 13.5h3.3c4.8 0 8.2 3.6 8.2 8.25S30.6 30 25.8 30h-3.3v-3.6h3.1c2.7 0 4.6-2 4.6-4.65s-1.9-4.65-4.6-4.65h-3.1v-3.6z" fill="url(#logoBlue)"/>
+  <!-- Brand Emblem: White M + Lime D -->
+  <rect x="1" y="2" width="38" height="38" rx="9" fill="url(#logoBg)" stroke="#9afb16" stroke-opacity="0.45" stroke-width="1.5"/>
+  <path d="M8.5 30V14.5c0-1 1.1-1.6 1.9-1l5.1 3.5 5.1-3.5c.8-.6 1.9 0 1.9 1V30h-3.6V19.6l-3.4 2.3-3.4-2.3V30H8.5z" fill="#f8fafc"/>
+  <path d="M22.5 13.5h3.3c4.8 0 8.2 3.6 8.2 8.25S30.6 30 25.8 30h-3.3v-3.6h3.1c2.7 0 4.6-2 4.6-4.65s-1.9-4.65-4.6-4.65h-3.1v-3.6z" fill="url(#logoLime)"/>
 
-  <!-- Crisp Wordmark -->
+  <!-- Matching Crisp Wordmark: White MultiPro + Lime Digital -->
   <text x="50" y="27.5" font-family="'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif" font-size="20" font-weight="800" letter-spacing="-0.4" fill="#f8fafc">MultiPro <tspan fill="#9afb16">Digital</tspan></text>
 </svg>
