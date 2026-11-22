@@ -286,19 +286,19 @@
         </div>
 
         <div class="field-block" style="margin-bottom:0;">
-          <div class="field-label"><span>4. Optional 0% Finance Guide</span></div>
-          <div class="opt-grid-3" data-group="finance">
-            <button type="button" class="opt-btn" data-val="12">
-              <strong>12 Months</strong>
-              <span>0% Interest</span>
+          <div class="field-label"><span>4. Existing Surface to Remove?</span></div>
+          <div class="opt-grid-3" data-group="prep">
+            <button type="button" class="opt-btn active" data-val="grass">
+              <strong>Grass / Soil</strong>
+              <span>Standard dig-out</span>
             </button>
-            <button type="button" class="opt-btn active" data-val="24">
-              <strong>24 Months</strong>
-              <span>0% Interest</span>
+            <button type="button" class="opt-btn" data-val="old_drive">
+              <strong>Old Tarmac / Flags</strong>
+              <span>Break-up &amp; skip haul</span>
             </button>
-            <button type="button" class="opt-btn" data-val="36">
-              <strong>36 Months</strong>
-              <span>0% Interest</span>
+            <button type="button" class="opt-btn" data-val="heavy">
+              <strong>Reinforced Concrete</strong>
+              <span>Heavy breaker + skip</span>
             </button>
           </div>
         </div>
@@ -308,12 +308,12 @@
         <div>
           <div class="out-kicker">Estimated North East Guide Range</div>
           <div class="out-price" id="priceOut">£4,950 – £6,050</div>
-          <div class="out-rate" id="rateOut">Based on 55 m² · £90–£110 / m² typical installed range</div>
+          <div class="out-rate" id="rateOut">Based on 55 m² Patterned Concrete · £90–£110 / m² typical range</div>
 
           <div class="finance-box">
-            <div class="f-top" id="finLabel">Phoenix 0% APR Finance Guide (24 Months)</div>
-            <div class="f-val" id="finOut">From £206 – £252 / month</div>
-            <div class="f-note">No deposit needed · Subject to status &amp; lender approval (1–10 yr options)</div>
+            <div class="f-top">Finance Available (1–10 Years · From 0% APR Rep.)</div>
+            <div class="f-val" id="finOut">Enter ~£5,500 in our Phoenix Finance Calculator</div>
+            <div class="f-note">Finance provided via Phoenix Financial Consultants Ltd (FRN 539195). No deposit needed · Subject to status.</div>
           </div>
 
           <ul class="inc-list">
@@ -338,8 +338,8 @@
         <p>Homeowners expecting a £1,500 drive see real £4.5k–£8k figures upfront before messaging your team.</p>
       </div>
       <div class="why-card">
-        <strong>Sells Your 0% Finance Automatically</strong>
-        <p>Turning a £6,000 drive into £167–£250/month makes higher-spec borders &amp; patios easy to say yes to.</p>
+        <strong>Bridges Straight Into Phoenix Finance</strong>
+        <p>Homeowners finally know their realistic £5k–£8k job cost before entering an amount on your official Phoenix Finance calculator.</p>
       </div>
       <div class="why-card">
         <strong>Ready in 48 Hours</strong>
@@ -349,13 +349,14 @@
   </div>
 
   <script>
-    const state = { project: 'concrete', area: 55, spec: 'standard', months: 24 };
+    const state = { project: 'concrete', area: 55, spec: 'standard', prep: 'grass' };
     const rates = {
       concrete: { standard: [90, 110], premium: [115, 140], label: 'Patterned Concrete' },
       resin:    { standard: [95, 120], premium: [125, 155], label: 'Resin Bound' },
       block:    { standard: [85, 105], premium: [110, 135], label: 'Block Paving' },
       patio:    { standard: [85, 105], premium: [110, 135], label: 'Patio Paving' }
     };
+    const prepAdd = { grass: [0, 0], old_drive: [8, 12], heavy: [15, 22] };
 
     function sizeLabel(m2) {
       if (m2 <= 35) return 'Small drive / patio';
@@ -370,17 +371,18 @@
 
     function update() {
       const cfg = rates[state.project];
-      const [loRate, hiRate] = cfg[state.spec];
+      const [baseLo, baseHi] = cfg[state.spec];
+      const [addLo, addHi] = prepAdd[state.prep];
+      const loRate = baseLo + addLo;
+      const hiRate = baseHi + addHi;
       const lo = state.area * loRate;
       const hi = state.area * hiRate;
-      const mLo = Math.round(lo / state.months);
-      const mHi = Math.round(hi / state.months);
+      const mid = Math.round(((lo + hi) / 2) / 100) * 100;
 
       document.getElementById('areaOut').textContent = `${state.area} m² (${sizeLabel(state.area)})`;
       document.getElementById('priceOut').textContent = `${fmtExact(lo)} – ${fmtExact(hi)}`;
       document.getElementById('rateOut').textContent = `Based on ${state.area} m² ${cfg.label} · £${loRate}–£${hiRate} / m² typical range`;
-      document.getElementById('finLabel').textContent = `Phoenix 0% APR Finance Guide (${state.months} Months)`;
-      document.getElementById('finOut').textContent = `From ${fmtExact(mLo)} – ${fmtExact(mHi)} / month`;
+      document.getElementById('finOut').textContent = `Know your real ~${fmtExact(mid)} guide before using Phoenix Finance`;
     }
 
     document.querySelectorAll('[data-group]').forEach(group => {
@@ -389,8 +391,7 @@
         btn.addEventListener('click', () => {
           group.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
-          if (key === 'finance') state.months = parseInt(btn.dataset.val, 10);
-          else state[key] = btn.dataset.val;
+          state[key] = btn.dataset.val;
           update();
         });
       });
@@ -407,7 +408,7 @@
       const pc = document.getElementById('custPostcode').value.trim().toUpperCase() || 'TS5';
       const price = document.getElementById('priceOut').textContent;
       const toast = document.getElementById('demoToast');
-      toast.innerHTML = `<strong>Demo Preview:</strong> On your live site, this qualified lead (<strong>${name}, ${pc}, ${state.area} m² ${state.project}, ${price}, ${state.months}mo 0% finance</strong>) lands straight in your inbox — pre-qualified before you pick up the phone.`;
+      toast.innerHTML = `<strong>Demo Preview:</strong> On your live site, this pre-qualified North East enquiry (<strong>${name}, ${pc}, ${state.area} m² ${rates[state.project].label}, ${price}</strong>) lands straight in your inbox — before anyone drives out.`;
       toast.classList.add('show');
     });
 
