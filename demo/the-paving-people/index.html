@@ -236,15 +236,23 @@
     <div class="calc-shell">
       <div>
         <div class="field-block">
-          <div class="field-label"><span>1. Project Type</span></div>
+          <div class="field-label"><span>1. Driveway or Patio Type</span></div>
           <div class="opt-grid" data-group="project">
-            <button type="button" class="opt-btn active" data-val="driveway">
-              <strong>Imprinted Concrete Driveway</strong>
-              <span>Full dig-out, Type 1 base &amp; C35 concrete</span>
+            <button type="button" class="opt-btn active" data-val="concrete">
+              <strong>Patterned Concrete</strong>
+              <span>50+ patterns, colour hardener &amp; sealer</span>
+            </button>
+            <button type="button" class="opt-btn" data-val="resin">
+              <strong>Resin Bound Driveway</strong>
+              <span>SuDS permeable, weed-free UV resin</span>
+            </button>
+            <button type="button" class="opt-btn" data-val="block">
+              <strong>Block Paving Driveway</strong>
+              <span>Classic cobble, herringbone &amp; edging</span>
             </button>
             <button type="button" class="opt-btn" data-val="patio">
-              <strong>Imprinted Concrete Patio</strong>
-              <span>Rear garden seating, paths &amp; steps</span>
+              <strong>Patio &amp; Garden Paving</strong>
+              <span>Imprinted concrete or Indian sandstone</span>
             </button>
           </div>
         </div>
@@ -303,9 +311,9 @@
           <div class="out-rate" id="rateOut">Based on 55 m² · £90–£110 / m² typical installed range</div>
 
           <div class="finance-box">
-            <div class="f-top" id="finLabel">0% Finance Guide (24 Months)</div>
+            <div class="f-top" id="finLabel">Phoenix 0% APR Finance Guide (24 Months)</div>
             <div class="f-val" id="finOut">From £206 – £252 / month</div>
-            <div class="f-note">Subject to survey &amp; lender approval · 0% interest</div>
+            <div class="f-note">No deposit needed · Subject to status &amp; lender approval (1–10 yr options)</div>
           </div>
 
           <ul class="inc-list">
@@ -341,10 +349,12 @@
   </div>
 
   <script>
-    const state = { project: 'driveway', area: 55, spec: 'standard', months: 24 };
+    const state = { project: 'concrete', area: 55, spec: 'standard', months: 24 };
     const rates = {
-      driveway: { standard: [90, 110], premium: [115, 140] },
-      patio:    { standard: [85, 105], premium: [110, 135] }
+      concrete: { standard: [90, 110], premium: [115, 140], label: 'Patterned Concrete' },
+      resin:    { standard: [95, 120], premium: [125, 155], label: 'Resin Bound' },
+      block:    { standard: [85, 105], premium: [110, 135], label: 'Block Paving' },
+      patio:    { standard: [85, 105], premium: [110, 135], label: 'Patio Paving' }
     };
 
     function sizeLabel(m2) {
@@ -354,16 +364,13 @@
       return 'Extra-large frontage';
     }
 
-    function fmt(n) {
-      return '£' + Math.round(n / 10) * 10;
-    }
-
     function fmtExact(n) {
       return '£' + Math.round(n).toLocaleString('en-GB');
     }
 
     function update() {
-      const [loRate, hiRate] = rates[state.project][state.spec];
+      const cfg = rates[state.project];
+      const [loRate, hiRate] = cfg[state.spec];
       const lo = state.area * loRate;
       const hi = state.area * hiRate;
       const mLo = Math.round(lo / state.months);
@@ -371,8 +378,8 @@
 
       document.getElementById('areaOut').textContent = `${state.area} m² (${sizeLabel(state.area)})`;
       document.getElementById('priceOut').textContent = `${fmtExact(lo)} – ${fmtExact(hi)}`;
-      document.getElementById('rateOut').textContent = `Based on ${state.area} m² · £${loRate}–£${hiRate} / m² typical installed range`;
-      document.getElementById('finLabel').textContent = `0% Finance Guide (${state.months} Months)`;
+      document.getElementById('rateOut').textContent = `Based on ${state.area} m² ${cfg.label} · £${loRate}–£${hiRate} / m² typical range`;
+      document.getElementById('finLabel').textContent = `Phoenix 0% APR Finance Guide (${state.months} Months)`;
       document.getElementById('finOut').textContent = `From ${fmtExact(mLo)} – ${fmtExact(mHi)} / month`;
     }
 
